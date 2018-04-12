@@ -26,13 +26,12 @@ int main(int argc, char* argv[])
   Mat face;
 
   vector<Mat> users;
+  users.push_back(imread("database/0/user.jpg", CV_LOAD_IMAGE_COLOR));
 
   Face_Detect face_detect;
   Algorithm_One algorithm_one(users);
   Algorithm_Two algorithm_two(users);
   Algorithm_Three algorithm_three(users);
-
-  // init_detect();
 
   while (true) 
   {
