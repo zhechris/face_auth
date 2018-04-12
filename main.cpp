@@ -30,11 +30,11 @@ int main(int argc, char* argv[])
   while (true) 
   {
   	camera >> frame;
-  	cout << "Capturing frame..." << endl;
+  	// cout << "Capturing frame..." << endl;
 
     if (!frame.empty() && has_face(frame))
     {
-      cout << "Face found!." << endl;
+      // cout << "Face found!." << endl;
       face = get_face(frame);
 
       int result = 0;
