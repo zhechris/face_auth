@@ -8,7 +8,14 @@
 using namespace std;
 using namespace cv;
 
-int algorithm_one(Mat face);
+class Algorithm_One
+{
 
+public:
+    Algorithm_One(vector<Mat> users);
+    int compare(Mat image);
+
+private:
+};
 
 #endif

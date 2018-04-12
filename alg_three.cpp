@@ -7,8 +7,14 @@
 
 #include "alg_three.hpp"
 
-int algorithm_three(cv::Mat face)
+Algorithm_Three::Algorithm_Three(vector<Mat> users)
 {
-	// INSERT ALGORITHM HERE
+    // Constructor
+}
+
+int Algorithm_Three::compare(Mat face)
+{
+    // INSERT ALGORITHM HERE
   return 0;
 }
+

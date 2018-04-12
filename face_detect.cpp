@@ -11,7 +11,7 @@
  CascadeClassifier face_cascade;
  CascadeClassifier eyes_cascade;
 
- void init_detect()
+ Face_Detect::Face_Detect()
  {
     if( !face_cascade.load(FACE_DETECT_XML) )
     { 
@@ -28,7 +28,7 @@
 /**
   * Looks for face. If none exist, returns null
   */
-Mat get_face(Mat image)
+Mat Face_Detect::get_face(Mat image)
 {
   Mat face;
 	// INSERT ALGORITHM HERE
@@ -36,7 +36,7 @@ Mat get_face(Mat image)
 }
 
 /** @function detectAndDisplay changed to work with current implementation */
-bool has_face(Mat image)
+bool Face_Detect::has_face(Mat image)
 {
   std::vector<Rect> faces;
   std::vector<Rect> good_faces;

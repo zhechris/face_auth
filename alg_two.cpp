@@ -7,7 +7,12 @@
 
 #include "alg_two.hpp"
 
-int algorithm_two(Mat face)
+Algorithm_Two::Algorithm_Two(vector<Mat> users)
+{
+    // Constructor
+}
+
+int Algorithm_Two::compare(Mat face)
 {
 	// INSERT ALGORITHM HERE
   return 0;

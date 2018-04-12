@@ -7,8 +7,13 @@
 
 #include "alg_one.hpp"
 
-int algorithm_one(Mat face)
+Algorithm_One::Algorithm_One(vector<Mat> users) 
 {
-	// INSERT ALGORITHM HERE
-  return 0;
+    // Constructor
+}
+
+int Algorithm_One::compare(Mat face)
+{
+    // INSERT ALGORITHM HERE
+    return 0;
 }

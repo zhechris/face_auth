@@ -25,22 +25,29 @@ int main(int argc, char* argv[])
 	Mat frame;
   Mat face;
 
-  init_detect();
+  vector<Mat> users;
+
+  Face_Detect face_detect;
+  Algorithm_One algorithm_one(users);
+  Algorithm_Two algorithm_two(users);
+  Algorithm_Three algorithm_three(users);
+
+  // init_detect();
 
   while (true) 
   {
   	camera >> frame;
   	// cout << "Capturing frame..." << endl;
 
-    if (!frame.empty() && has_face(frame))
+    if (!frame.empty() && face_detect.has_face(frame))
     {
       // cout << "Face found!." << endl;
-      face = get_face(frame);
+      face = face_detect.get_face(frame);
 
       int result = 0;
-      result = algorithm_one(face);
-      result = algorithm_two(face);
-      result = algorithm_three(face);
+      result = algorithm_one.compare(face);
+      result = algorithm_two.compare(face);
+      result = algorithm_three.compare(face);
 
       if (result > THRESHOLD)
       {
