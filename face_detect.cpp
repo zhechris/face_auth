@@ -28,18 +28,22 @@
 /**
   * Looks for face. If none exist, returns null
   */
-Mat Face_Detect::get_face(Mat image)
-{
+Mat Face_Detect::get_face() 
+{ 
   Mat face;
-	// INSERT ALGORITHM HERE
-  return face;
+  if (good_faces.size() > 0)
+  {
+    face = good_faces[0];
+  }
+  return face; 
 }
+
+vector<Mat> Face_Detect::get_face_arr() { return good_faces; }
 
 /** @function detectAndDisplay changed to work with current implementation */
 bool Face_Detect::has_face(Mat image)
 {
   std::vector<Rect> faces;
-  std::vector<Rect> good_faces;
   Mat frame_gray;
   // image = image.clone();
 
@@ -62,7 +66,7 @@ bool Face_Detect::has_face(Mat image)
 
     if (eyes.size() != 2)
     {
-        good_faces.push_back(faces[i]);
+        good_faces.push_back(image(faces[i]));
     }
 
     // for( size_t j = 0; j < eyes.size(); j++ )

@@ -2,6 +2,10 @@
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 #include <iostream>
+#include <sstream>
+#include <fstream>
+#include <dirent.h>
+#include <unistd.h>
 
 #include "alg_one.hpp"
 #include "alg_two.hpp"
@@ -13,8 +17,96 @@
 using namespace std;
 using namespace cv;
 
+bool file_exists(string name)
+{
+  ifstream f(name.c_str());
+  return f.good();
+}
+
+bool DirectoryExists( const char* pzPath )
+{
+    if ( pzPath == NULL) return false;
+
+    DIR *pDir;
+    bool bExists = false;
+
+    pDir = opendir (pzPath);
+
+    if (pDir != NULL)
+    {
+        bExists = true;    
+        (void) closedir (pDir);
+    }
+
+    return bExists;
+}
+
+void save_face()
+{
+  VideoCapture camera(0);
+  if (!camera.isOpened())
+  {
+    cout << "Error: Camera is missing." << endl;
+    exit(-1);
+  }
+
+  Mat frame;
+  Mat face;
+
+  Face_Detect face_detect;
+
+
+  while (true) 
+  {
+    camera >> frame;
+    // cout << "Capturing frame..." << endl;
+
+    if (!frame.empty() && face_detect.has_face(frame))
+    {
+      // cout << "Face found!." << endl;
+      face = face_detect.get_face();
+
+      if (!face.empty())
+      {
+        cout << "Face found!" << endl;
+        break;
+      }
+    }
+
+    //Wait to allow other processes to run
+    imshow("Secure Your Face", frame);
+  }
+
+  int iCount = 0;
+  while (true) 
+  {
+    stringstream ss;
+    ss << "database/user_" << iCount << ".jpg";
+    string dir = ss.str();
+
+    if (!file_exists(dir))
+    {
+      imwrite(dir,face);
+      cout << "File saved to: " << dir << endl;
+      exit(0);
+    } else {
+      iCount++;
+    }
+  }
+}
+
 int main(int argc, char* argv[])
 {
+  char c;
+
+  if (argc == 2)
+  {
+    if (strcmp(argv[1], "-s") == 0)
+    {
+      save_face();
+    }
+  }
+
 	VideoCapture camera(0);
 	if (!camera.isOpened())
 	{
@@ -41,7 +133,7 @@ int main(int argc, char* argv[])
     if (!frame.empty() && face_detect.has_face(frame))
     {
       // cout << "Face found!." << endl;
-      face = face_detect.get_face(frame);
+      face = face_detect.get_face();
 
       int result = 0;
       result = algorithm_one.compare(face);
@@ -62,5 +154,4 @@ int main(int argc, char* argv[])
     //Exit the loop if esc key
     if(27 == char(c)) break;
   }
-  imwrite("test.jpg",frame);
 }

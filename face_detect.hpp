@@ -21,10 +21,13 @@ class Face_Detect
 
 public:
     Face_Detect();
-    Mat get_face(Mat image);
+    Mat get_face();
+    vector<Mat> get_face_arr();
     bool has_face(Mat image);
 
 private:
+    std::vector<Mat> good_faces;
+
 };
 
 #endif
