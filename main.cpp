@@ -30,10 +30,11 @@ int main(int argc, char* argv[])
   	camera >> frame;
   	cout << "Capturing frame..." << endl;
 
-    face = get_face(frame);
-    if (!face.empty())
+    if (!frame.empty() && has_face(frame))
     {
       cout << "Face found!." << endl;
+      face = get_face(frame);
+
       int result = 0;
       result = algorithm_one(face);
       result = algorithm_two(face);
@@ -47,6 +48,7 @@ int main(int argc, char* argv[])
     }
 
     //Wait to allow other processes to run
+    imshow("Secure Your Face", frame);
     int c = cvWaitKey(40);
 
     //Exit the loop if esc key
