@@ -23,24 +23,6 @@ bool file_exists(string name)
   return f.good();
 }
 
-bool DirectoryExists( const char* pzPath )
-{
-    if ( pzPath == NULL) return false;
-
-    DIR *pDir;
-    bool bExists = false;
-
-    pDir = opendir (pzPath);
-
-    if (pDir != NULL)
-    {
-        bExists = true;    
-        (void) closedir (pDir);
-    }
-
-    return bExists;
-}
-
 void save_face()
 {
   VideoCapture camera(0);
@@ -118,7 +100,7 @@ int main(int argc, char* argv[])
   Mat face;
 
   vector<Mat> users;
-  users.push_back(imread("database/0/user.jpg", CV_LOAD_IMAGE_COLOR));
+  users.push_back(imread("database/user_0.jpg", CV_LOAD_IMAGE_COLOR));
 
   Face_Detect face_detect;
   Algorithm_One algorithm_one(users);
