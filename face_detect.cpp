@@ -11,6 +11,20 @@
  CascadeClassifier face_cascade;
  CascadeClassifier eyes_cascade;
 
+ void init_detect()
+ {
+    if( !face_cascade.load(FACE_DETECT_XML) )
+    { 
+        printf("--(!)Error loading\n"); 
+        exit(-1);
+    }
+    if( !eyes_cascade.load(EYE_DETECT_XML) )
+    { 
+        printf("--(!)Error loading\n"); 
+        exit(-1);
+    }
+ }
+
 /**
   * Looks for face. If none exist, returns null
   */
@@ -23,17 +37,6 @@ Mat get_face(Mat image)
 
 bool has_face(Mat image)
 {
-    if( !face_cascade.load(FACE_DETECT_XML) )
-    { 
-        printf("--(!)Error loading\n"); 
-        exit(-1);
-    }
-    if( !eyes_cascade.load(EYE_DETECT_XML) )
-    { 
-        printf("--(!)Error loading\n"); 
-        exit(-1);
-    }
-    
     return detect(image);
 }
 

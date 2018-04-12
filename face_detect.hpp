@@ -13,6 +13,7 @@ using namespace cv;
 #define FACE_DETECT_XML "haarcascades/haarcascade_frontalface_alt.xml"
 #define EYE_DETECT_XML "haarcascades/haarcascade_eye_tree_eyeglasses.xml"
 
+void init_detect();
 Mat get_face(Mat image);
 bool has_face(Mat image);
 bool detect(Mat image);

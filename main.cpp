@@ -25,6 +25,8 @@ int main(int argc, char* argv[])
 	Mat frame;
   Mat face;
 
+  init_detect();
+
   while (true) 
   {
   	camera >> frame;
