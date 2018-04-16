@@ -1,6 +1,6 @@
 /*
  *
- *  First Algorithm to test image
+ *  Second Algorithm to test image
  *    against known dataset
  *
  */
