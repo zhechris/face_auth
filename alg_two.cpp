@@ -31,21 +31,21 @@ int Algorithm_Two::compare(Mat face)
   
     }  
   
-    //读取你的CSV文件路径.  
+    // read your CSV path
   
     string fn_csv = string(argv[1]);  
-    // 2个容器来存放图像数据和对应的标签  
+    // Use two containers to save images and correspongding labels 
     vector<Mat> images;  
     vector<int> labels;  
-    // 读取数据. 如果文件不合法就会出错  
-    // 输入的文件名已经有了.  
+    // read the data, if the file is invalid, output error
+    // the file you enter already exist
     try {  
   
         read_csv(fn_csv, images, labels);  
   
     } catch (cv::Exception& e) {  
         cerr <<"Error opening file \""<< fn_csv <<"\". Reason: "<< e.msg << endl;  
-        // 文件有问题，我们啥也做不了了，退出了  
+        // the file has problem, just exit
         exit(1);  
     }  
   
