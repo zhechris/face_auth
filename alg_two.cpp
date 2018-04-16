@@ -7,12 +7,12 @@
 
 #include "alg_one.hpp"
 
-Algorithm_One::Algorithm_One(vector<Mat> users) 
+Algorithm_Two::Algorithm_Two(vector<Mat> users) 
 {
     // Constructor
 }
 
-int Algorithm_One::compare(Mat face)
+int Algorithm_Two::compare(Mat face)
 {
     // INSERT ALGORITHM HERE
     if (argc <2)   
