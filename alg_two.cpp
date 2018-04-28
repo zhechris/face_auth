@@ -5,7 +5,7 @@
  *
  */
 
-#include "alg_one.hpp"
+#include "alg_two.hpp"
 
 Algorithm_Two::Algorithm_Two(vector<Mat> users) 
 {
