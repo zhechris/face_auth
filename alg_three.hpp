@@ -13,7 +13,7 @@ class Algorithm_Three
 
 public:
     Algorithm_Three(vector<Mat> users);
-    int compare(Mat image);
+    int compare(Mat image); //int compare(Mat _src, Mat _dst)
 
 private:
 };
