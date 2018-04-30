@@ -1,6 +1,6 @@
 /*
  *
- *  First Algorithm to test image
+ *  Third Algorithm to test image
  *    against known dataset
  *
  */
@@ -17,4 +17,3 @@ int Algorithm_Three::compare(Mat face)
     // INSERT ALGORITHM HERE
   return 0;
 }
-
